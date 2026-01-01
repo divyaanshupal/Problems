@@ -2,14 +2,24 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "C++ Run (No Debug)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "d:/Problems",
+      "program": "d:/Problems/build/Debug/outDebug"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Problems",
-      "program": "d:/Problems/build/Debug/outDebug",
+      "cwd": "d:/Problems/IP",
+      "program": "d:/Problems/IP/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
