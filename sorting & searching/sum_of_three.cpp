@@ -20,37 +20,31 @@ const int MOD = 1e9 + 7;
 
 void solve(){
     input
-    vector<int> dx = {2, 2, -2, -2, 1, 1, -1, -1};
-    vector<int> dy = {1, -1, 1, -1, 2, -2, 2, -2};
-
-
-    queue<pair<int,int>> q;
-    q.push({0,0});
-    vector<vector<int>> dis(n, vector<int>(n,-1));
-    dis[0][0]=0;
-
-    while(!q.empty()){
-        auto [x,y]= q.front();
-        q.pop();
-
-        for(int k=0;k<8;k++){
-            int nx=x+dx[k];
-            int ny=y+dy[k];
-
-            if(nx>=0 and nx<n and ny>=0 and ny<n and dis[nx][ny]==-1){
-                dis[nx][ny]=dis[x][y]+1;
-                q.push({nx,ny});
-            }
-        }
+    int target; cin>>target;
+    vector<pair<int,int>>arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i].first;
+        arr[i].second=i+1;
     }
+
+    sorting(arr);
 
     for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            cout<<dis[i][j]<<" ";
+        int updated_target=target-arr[i].first;
+        int l=i+1;
+        int r=n-1;
+        while(l<r){
+            int sum=arr[l].first+arr[r].first;
+            if(sum==updated_target){
+                cout<<arr[i].second<<" "<<arr[l].second<<" "<<arr[r].second;
+                return;
+            }
+            else if(sum<updated_target) l++;
+            else r--;
         }
-        cout<<nl;
     }
-    
+
+    cout<<"IMPOSSIBLE";
 
 }
 
