@@ -1,56 +1,49 @@
-#include <bits/stdc++.h>
-#pragma GCC optimize("Ofast")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
-#pragma GCC optimize("unroll-loops")
-#define pb push_back
-#define ff first
-#define ss second
-#define inf INT_MAX
-#define int long long
-#define vi vector<int>
-using namespace std;
-#define sorting(arr) sort(arr.begin(),arr.end())
-#define all(v) (v).begin(), (v).end()
-template <typename T> istream &operator>>(istream &is, vector<T> &v) { for (auto &i : v) is >> i; return is; }
- template <typename T> ostream &operator<<(ostream &os, const vector<T> &v) { for (auto &i : v) os << i << ' '; return os; }
-const int MOD = 1e9 + 7;
-#define nl "\n"
-#define input int n; cin>>n;
-    
+#include <iostream>
+#include <fstream>
+#include <string>
 
-void solve(){
-    int n;
-    cin>>n;
-    string str;
-    cin>>str;
-    //cout<<str<<nl;
-    unordered_map<char,int> mp;
-    for(char c:str){
-        mp[c]++;
+using namespace std;
+
+int main() {
+    string filename;
+    cout << "Enter the file name: ";
+    cin >> filename;
+
+    ifstream file(filename);
+
+    if (!file.is_open()) {
+        cout << "Error: Unable to open file." << endl;
+        return 1;
     }
-    for(auto it:mp){
-        if(it.second >2) {
-            cout<<"NO"<<nl;
-            return;
+
+    long long characters = 0;
+    long long words = 0;
+    long long lines = 0;
+
+    string line;
+
+    while (getline(file, line)) {
+        lines++;                     // Count line
+        characters += line.length(); // Count characters in line
+
+        // Count words in line
+        bool inWord = false;
+        for (char ch : line) {
+            if (isspace(ch)) {
+                inWord = false;
+            } else if (!inWord) {
+                inWord = true;
+                words++;
+            }
         }
     }
 
-    cout<<"YES"<<nl;
-}
+    file.close();
 
-//testing again little 
-signed main() {
- 
-    cin.tie(NULL)->sync_with_stdio(false);
-    #ifndef ONLINE_JUDGE
-    freopen("/home/divyanshu-pal/Documents/Problems/input.txt", "r", stdin);
-    freopen("/home/divyanshu-pal/Documents/Problems/output.txt", "w", stdout);
-    #endif
- 
-    int t;
-    cin>>t;
-    while(t--){
-        solve();
-    }
-    //solve();
+    cout << "\nFile Statistics:\n";
+    cout << "Lines      : " << lines << endl;
+    cout << "Words      : " << words << endl;
+    cout << "Characters : " << characters << endl;
+
+    return 0;
 }

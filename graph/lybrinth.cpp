@@ -129,16 +129,18 @@ void solve(){
 //testing again little 
 signed main() {
  
-    cin.tie(NULL)->sync_with_stdio(false);
-    #ifndef ONLINE_JUDGE
-    freopen("/home/divyanshu-pal/Documents/Problems/input.txt", "r", stdin);
-    freopen("/home/divyanshu-pal/Documents/Problems/output.txt", "w", stdout);
-    #endif
+    // cin.tie(NULL)->sync_with_stdio(false);
+    // #ifndef ONLINE_JUDGE
+    // freopen("/home/divyanshu-pal/Documents/Problems/input.txt", "r", stdin);
+    // freopen("/home/divyanshu-pal/Documents/Problems/output.txt", "w", stdout);
+    // #endif
  
-    // int t;
-    // cin>>t;
-    // while(t--){
-    //     solve();
-    // }
-    solve();
+    // // int t;
+    // // cin>>t;
+    // // while(t--){
+    // //     solve();
+    // // }
+    // solve();
+
+    cout<<bitset<3>(7);
 }

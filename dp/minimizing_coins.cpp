@@ -16,20 +16,32 @@ template <typename T> istream &operator>>(istream &is, vector<T> &v) { for (auto
 const int MOD = 1e9 + 7;
 #define nl "\n"
 #define input int n; cin>>n;
+
+  
+int solve(int target,vector<int>& arr,vector<int>&dp){
+    int n=arr.size();
+
+    if(target==0) return 0;
     
+    if(dp[target]!=-1) return dp[target];
 
-void solve(){
-    int n;
-    cin>>n;
-    vi arr(n),brr(n);
-    cin>>arr>>brr;
-    int sum=accumulate(arr.begin(),arr.end(),0);
-    int mini=1e9;
-
-    for(int i=0;i<n;i++){
-        mini=min(mini,arr[i]-brr[i]);
+    int ans=inf;
+    for(auto it:arr){
+        if(it<=target) ans=min(ans,1+solve(target-it,arr,dp));
     }
-    cout<<sum-mini<<nl;
+
+    return dp[target]=ans;
+}
+void helper(){
+    int n,target;
+    cin>>n>>target;
+    vi arr(n);
+    cin>>arr;
+    //vector<int>arr={1,2,3,4,5,6};
+    vector<int>dp(target+1,-1);
+    int ans = solve(target, arr, dp);
+    if(ans >= inf) cout << -1;
+    else cout << ans;
 
 }
 
@@ -42,10 +54,10 @@ signed main() {
     freopen("/home/divyanshu-pal/Documents/Problems/output.txt", "w", stdout);
     #endif
  
-    int t;
-    cin>>t;
-    while(t--){
-        solve();
-    }
-    //solve();
+    // int t;
+    // cin>>t;
+    // while(t--){
+    //     solve();
+    // }
+    helper();
 }
